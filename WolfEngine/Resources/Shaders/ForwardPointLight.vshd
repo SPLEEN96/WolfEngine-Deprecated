@@ -1,0 +1,9 @@
+#include <Shader.vshd>
+
+void main() {
+	gl_Position = projection * view*model*vec4(vPosition.xyz, 1.f);
+	
+	frag_pos = vec3(model*vec4(vPosition.xyz, 1.f));
+	normal_vec = CalcNormalVector();
+	tex_coord = vTexCoord;
+}

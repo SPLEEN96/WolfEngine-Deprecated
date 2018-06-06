@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\TestScene">
+      <UniqueIdentifier>{539ebbd3-cd0c-4c2c-91a4-e8b074b0cd5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{bed88989-4ceb-47ab-a5a4-bf1ed23b71b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Math">
+      <UniqueIdentifier>{1df3a168-8f68-42e2-94d2-237de6437515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{6d730a55-715c-4385-ad47-a82fa72cff9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rendering\Lighting">
+      <UniqueIdentifier>{c3cd9408-3c36-444a-9e9e-8017c1d4659d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{086c36a2-2904-4a04-8095-3e8942d7512f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{f4d04c2f-45de-4b84-82b5-9e1161e6f0f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLibs">
+      <UniqueIdentifier>{6d6ce147-b465-4d58-bfa4-405a29b5c4cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLibs\imgui">
+      <UniqueIdentifier>{9ab52593-131a-42e5-8fbc-90e82b5746e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\ResourceManagement">
+      <UniqueIdentifier>{6aac8ec5-ec0a-4dce-b9b9-9d015a75fa82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\ResourceManagement\Loaders">
+      <UniqueIdentifier>{10a74596-4fe6-453d-84c4-dc51366fc011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\ResourceManagement\DataTypes">
+      <UniqueIdentifier>{fb6cfbda-6f8c-4e60-9d6d-b69637120c73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Input">
+      <UniqueIdentifier>{6ebfd53d-b151-48c3-82fe-876d7a8e0f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Lights">
+      <UniqueIdentifier>{a510fb9d-f4d3-40db-b70f-2569524f16ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\TestScene\TestScene.cpp">
+      <Filter>Source Files\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\imgui\imgui.cpp">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\imgui\imgui_demo.cpp">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\imgui\imgui_draw.cpp">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\imgui\imgui_impl_glfw_gl3.cpp">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\glad\glad.c">
+      <Filter>ExternalLibs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Rendering\Material.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\Mesh.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\RenderingEngine.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\Shader.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\Vertex.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\ForwardAmbient.h">
+      <Filter>Header Files\Rendering\Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\ForwardDirectional.h">
+      <Filter>Header Files\Rendering\Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\ForwardPointLight.h">
+      <Filter>Header Files\Rendering\Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\CoreEngine.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Entity.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Logger.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Scene.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Time.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Transform.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Window.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Math\Matrix.h">
+      <Filter>Header Files\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Math\Vector.h">
+      <Filter>Header Files\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TestScene\TestScene.h">
+      <Filter>Source Files\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Camera.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\EntityComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\LightMeshRenderer.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\MeshRenderer.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\Texture.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\imconfig.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\imgui.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\imgui_impl_glfw_gl3.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\imgui_internal.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\stb_rect_pack.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\stb_textedit.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\imgui\stb_truetype.h">
+      <Filter>ExternalLibs\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\GUImanager.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\ResourceFactory.h">
+      <Filter>Header Files\Core\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\Loaders\ImageLoader.h">
+      <Filter>Header Files\Core\ResourceManagement\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\Loaders\ModelLoader.h">
+      <Filter>Header Files\Core\ResourceManagement\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\Loaders\ResourceLoader.h">
+      <Filter>Header Files\Core\ResourceManagement\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\Loaders\ShaderSourceLoader.h">
+      <Filter>Header Files\Core\ResourceManagement\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\DataTypes\MeshData.h">
+      <Filter>Header Files\Core\ResourceManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\DataTypes\Typedefs.h">
+      <Filter>Header Files\Core\ResourceManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\DataTypes\Model.h">
+      <Filter>Header Files\Core\ResourceManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\DataTypes\DynamicBuffer.h">
+      <Filter>Header Files\Core\ResourceManagement\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\ResourceManagement\RenderingEngineData.h">
+      <Filter>Header Files\Core\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Rendering\GeometryData.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Input\KeyboardHandler.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Input\KeyboardMovement.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Input\MouseHandler.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Input\MousePicker.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Lights\BaseLight.h">
+      <Filter>Header Files\Components\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Lights\DirectionalLight.h">
+      <Filter>Header Files\Components\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Lights\PointLight.h">
+      <Filter>Header Files\Components\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Components\Input\MouseMovement.h">
+      <Filter>Header Files\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Math\MathLib.h">
+      <Filter>Header Files\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Physics\BoundingBox.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Physics\MouseRay.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ToDo.txt" />
+  </ItemGroup>
+</Project>

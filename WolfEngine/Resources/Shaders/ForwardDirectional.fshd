@@ -1,0 +1,34 @@
+#include <Shader.fshd>
+
+uniform DirLight dirlight;
+
+vec3 CalcDirLight(DirLight light, vec3 normal, vec3 view_direction);
+void main() {
+	vec3 view_dir = normalize(view_pos - frag_pos);
+	vec3 normalized=normalize(normal_vec);
+	
+	glColor = vec4(CalcDirLight(dirlight, normalized, view_dir), 1.f);
+}
+
+vec3 CalcDirLight(DirLight light, vec3 normal, vec3 view_direction) {
+	vec3 light_dir = normalize(-light.direction);
+
+	//DIFFUSE
+	float diff_angle = max(dot(normal, light_dir), 0.0f);
+	vec3 diffuse;
+	if(use_tex)
+		diffuse = diff_angle * light.diffuse * CalcTexColor().rgb;
+	else
+		diffuse = diff_angle * light.diffuse * material.diffuse;
+
+	//SPECULAR
+	vec3 reflect_dir = reflect(-light_dir, normal);
+	float spec = pow(max(dot(view_direction, reflect_dir), 0.0f), material.shininess);
+	vec3 specular = spec * light.specular * material.specular;
+	
+	
+	return (diffuse + specular);
+}
+
+
+

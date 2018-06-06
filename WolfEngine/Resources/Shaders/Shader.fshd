@@ -1,0 +1,47 @@
+#version 330 core
+
+struct Material {
+	vec3 ambient;
+	vec3 diffuse;
+	vec3 specular;
+	float shininess;
+};
+
+
+struct DirLight {
+	vec3 direction;
+
+	vec3 diffuse;
+	vec3 specular;
+};
+
+
+struct PointLight {
+	vec3 position;
+	
+	float range;
+	float kConstant;
+	float kLinear;
+	float kQuadratic;
+
+	vec3 diffuse;
+	vec3 specular;
+};
+
+
+in vec3 normal_vec;
+in vec3 frag_pos;
+in vec2 tex_coord;
+
+uniform vec3 view_pos;
+uniform Material material;
+uniform sampler2D tex_sampler;
+uniform bool use_tex;
+
+out vec4 glColor;
+
+
+vec4 CalcTexColor(){
+	return texture(tex_sampler,tex_coord.xy);
+}
+

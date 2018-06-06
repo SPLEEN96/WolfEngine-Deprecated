@@ -1,0 +1,10 @@
+#include <Shader.fshd>
+
+uniform vec3 ambient;
+
+void main(){
+		if(use_tex)
+			glColor =vec4(ambient.xyz, 1.f) * CalcTexColor();
+		else
+			glColor =vec4(ambient.xyz, 1.f) * vec4(material.ambient.xyz, 1.f);
+}

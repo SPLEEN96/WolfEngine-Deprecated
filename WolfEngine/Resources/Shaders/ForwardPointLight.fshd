@@ -1,0 +1,40 @@
+#include <Shader.fshd>
+
+uniform PointLight pointlight;
+
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 view_direction);
+void main() {
+	vec3 view_dir = normalize(view_pos - frag_pos);
+	vec3 normalized=normalize(normal_vec);
+	
+	glColor = vec4(CalcPointLight(pointlight, normalized, view_dir), 1.f);
+}
+
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 view_direction) {
+	float distance = length(light.position - frag_pos);
+	if(distance>light.range) return vec3(0,0,0);
+	
+	vec3 light_dir = normalize(light.position - frag_pos);
+	
+	//DIFFUSE
+	float diff_angle = max(dot(normal, light_dir), 0.0f);
+	vec3 diffuse;
+	if(use_tex)
+		diffuse = diff_angle * light.diffuse * CalcTexColor().rgb;
+	else
+		diffuse = diff_angle * light.diffuse * material.diffuse;
+		
+	//SPECULAR
+	vec3 reflect_dir = reflect(-light_dir, normal);
+	float spec = pow(max(dot(view_direction, reflect_dir), 0.0f), material.shininess);
+	vec3 specular = spec * light.specular * material.specular;
+	
+	//ATTENUATION
+	float attenuation = (light.kConstant + 
+						(light.kLinear * distance) +
+						(light.kQuadratic * (distance*distance)));
+	
+	diffuse /= attenuation;
+	specular /= attenuation;
+	return (diffuse + specular);
+}
