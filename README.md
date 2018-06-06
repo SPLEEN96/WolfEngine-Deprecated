@@ -26,15 +26,15 @@ Suffice to say that this is a work in progress!
 
 ### Config
 In order for the engine to work, you need to:
-* Change the VisualStudio target platform to win32
- -right-clicking on the project and choose **Properties**
- -click on the **Configuration Manager** at the top of the **Property Pages** dialog box
+* Change the VisualStudio target platform to win32<br/>
+ - right-clicking on the project and choose **Properties**
+ - click on the **Configuration Manager** at the top of the **Property Pages** dialog box
  ![Alt text](/screenshots/target_platform_01.png?raw=true "Configuration Manager")
- -change the **Active solution platform** to **x86** and click on close
+ - change the **Active solution platform** to **x86** and click on close
  ![Alt text](/screenshots/target_platform_02.png?raw=true "Configuration Manager")
- -be sure that the selected platform is **Active(Win32)**
+ - be sure that the selected platform is **Active(Win32)**
  ![Alt text](/screenshots/target_platform_03.png?raw=true "Configuration Manager")
- -and click on apply at the bottom of the **Property Pages** dialog box
+ - and click on apply at the bottom of the **Property Pages** dialog box
 * Change the project directory in the file <br/>
 /Src/Core/ResourceManagement/Loaders/ResourceLoader.h
 ![Alt text](/screenshots/project_dir.png?raw=true "PROJECT_DIR")
