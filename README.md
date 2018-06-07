@@ -128,7 +128,7 @@ void TestScene::Init(ResourceFactory* rfactory_handle){
   
   for(size_t i=0; i<1000; i++){                                               /* ...use it how many times that you want! */
     Entity *tmp_entity =rfactory_handle->BuildEntityFromModelData("model filename", &some_material, "entity name");
-    tmp_entity->Translate(Vector3f(i*i,0.f,0.f)); /* Translate each entities on the x axis to draw them side by side */
+    tmp_entity->GetTransform()->Translate(Vector3f(i*i,0.f,0.f)); /* Translate each entities on the x axis to draw them side by side */
     m_root_entity->AddChild(tmp_entity); /* Add the entity to the root entity */
   }
 }
