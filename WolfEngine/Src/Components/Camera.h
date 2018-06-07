@@ -6,8 +6,7 @@
 
 #include "..\Core\Math\MathLib.h"
 
-/* There is no mouse movement because it would be too tedious */
-/* to use the UI in the rendering engine. */
+
 class Camera :public EntityComponent {
 private: Camera() {}
 public:
