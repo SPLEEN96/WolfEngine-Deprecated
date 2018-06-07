@@ -15,7 +15,7 @@ Suffice to say that this is a work in progress!
 ## Features (still barebones...)
  * Entity Component (EC)
  * Forward Rendering
- * Model Loading (can load up to 10k entities in less than 3 seconds)
+ * Model Loading
  * Phong Shaders
  * UI (barely implemented)
  * Ease of use
@@ -45,7 +45,7 @@ In order for the engine to work, you need to:
 That's it! You are now ready to use it!
 
 ### How to use it
-#### The Basics
+#### The Basics :book:
 In order to draw something on the screen, you have to write some code in a **Scene object**. <br/>
 One called **TestScene** (/Src/TestScene/TestScene.cpp) comes with the project but you can create your own.
 The "code" you have to write is an amalgam of **Entities**. An **Entity** is foremost an abstract concept; anything that is drawn, or not, in the scene.<br/>
@@ -86,7 +86,7 @@ m_root_entity->AddChild(some_light);
 And just like that, you have a light drawn on the screen! :smiley: <br/>
 A test scene exemple and somes basic entities comes with the project.
 
-#### The Camera
+#### The Camera :camera:
 It is required to add a **Camera** to the **Scene**.
 The constructor looks like this:
 ```c++
@@ -100,7 +100,7 @@ Where
 It is use to automatically add the **Camera** to the **RenderingEngine**.<br/>
 + parent is the entity containing it (Remember that **Camera** is an **EntityComponent**).
 + screen_width and screen_height are the width and height of the **Window**. <br/>
-You can access them with the member attributes of the scene m_screen_width and m_screen_height
+You can access them with the member attributes of the **Scene** m_screen_width and m_screen_height
 + You don't have to play with the rest of the arguments, but if you do,
   - fov is the **Field of View** angle of the camera. It determines how wide you can see in the **Scene**.
   - zNear is the front of the **Clipping Plane** of the **Camera**. It determines how close an object is from the **Camera** before being **Clipped**(not drawned).
@@ -114,7 +114,7 @@ Controller->AddComponent(new Camera(RenderingEngine::GetInstance().GetDataHandle
 Controller->AddComponent(new KeyboardMovement()); /* If you want to be able to move with the keyboard */
 ```
 
-#### Loading a 3d model
+#### Loading a 3d model :floppy_disk:
 The **ResourceFactory** is used to load data(3D models, shaders, textures, etc..) in memory and keep a reference for future use.<br/>
 A **ResourceFactory** handle comes in the form of an argument in the **Init()** method of the **Scene**.<br/>
 It can be used to load a **Model** in memory <br/>
@@ -125,10 +125,10 @@ Once a **Model** is loaded in memory, you can build as many entities as you want
 /* The initialization method of the Scene object TestScene */
 void TestScene::Init(ResourceFactory* rfactory_handle){
   rfactory_handle->LoadModelDataInMemory("filename(without the full path)");  /* Load the model once... */
+  
   for(size_t i=0; i<1000; i++){                                               /* ...use it how many times that you want! */
-    Entity *tmp_entity  =new Entity();
-    tmp_entity  =rfactory_handle->BuildEntityFromModelData("model filename", &some_material, "entity name");
-    tmp_entity->Translate(Vector3f(i*i,0.f,0.f)); /* Translate each entities on the x axis to draw them side by side */
+    Entity *tmp_entity =rfactory_handle->BuildEntityFromModelData("model filename", &some_material, "entity name");
+    tmp_entity->GetTransform()->Translate(Vector3f(i*i,0.f,0.f)); /* Translate each entities on the x axis to draw them side by side */
     m_root_entity->AddChild(tmp_entity); /* Add the entity to the root entity */
   }
 }
@@ -138,11 +138,11 @@ You can find a list of **Material** in the file **/Src/Rendering/Material.h** <b
 Some 3D **Models** come with the project in the folder **/Resources/Models/** <br/>
 
 Remember that you only have to enter the filename in the **LoadModelDataInMemory()** method!<br/>
-So, for the model /Project/Full/Path/Resources/Models/Xenomorph.obj the method will look like this:
+So, for the model /Project/Full/Path/Resources/Models/Wolf.obj the method will look like this:
 ```c++
-rfactory_handle->LoadModelDataInMemory("Xenomorph.obj");
-Entity *xeno  =rfactory->BuilEntityFromModelData("Xenomorph.obj", &MAT_OBSIDIAN, "xenomorph entity");
-m_root_entity->AddChild(xeno);
+rfactory_handle->LoadModelDataInMemory("Wolf.obj");
+Entity *model  =rfactory->BuilEntityFromModelData("Wolf.obj", &MAT_OBSIDIAN, "wolf entity");
+m_root_entity->AddChild(model);
 ```
 
 #### Add some Lighting to the scene :star2:
@@ -181,7 +181,7 @@ m_root_entity->AddChild(sunlight);                                   /* Don't fo
 ```
 ![Alt text](/screenshots/directional_before_after.png?raw=true "Before/After") <br/>
 ##### PointLight :high_brightness:
-A **PointLight** is a point in 3D space that emits rays in all direction. The light rays fade out quadratically until they meet the **Range** of the **PointLight** where the intensity is set to zero. <br/>
+A **PointLight** is a point in 3D space that emits rays in all directions. The light rays fade out quadratically until they meet the **Range** of the **PointLight** where the intensity is set to zero. <br/>
 They are the most commonly used light effect in a scene. <br/>
 ![Alt text](/screenshots/pointlight.png?raw=true "PointLight") <br/>
 *img source: http://www.scratchapixel.com/images/upload/shading-intro/shad-sphericallight2.png?*
@@ -200,7 +200,7 @@ This list is then used each frames to render all the lights.
 + range is an **Enum** found with the definition of **PointLight** and determines the **Range** of the light.
   - Some range example: RANGE_7, RANGE_20, RANGE_32,..
 
-So, this is what the instantiation of a **PointLight** with a red color and a position of (x=-1, y=0.5, z=0) looks like: 
+So, this is what the instantiation of a **PointLight** with a red color, a range of 20 and a position of (x=-1, y=0.5, z=0) looks like: 
 ```c++
 Entity *light = new Entity("light", false);                          /* First create an entity */
 light->GetTransform()->SetPosition(Vector3f(-1.f, 0.5f, 0.f));       /* Set its position */
