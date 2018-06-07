@@ -23,6 +23,7 @@ namespace MLib {
 		return sqrt(length);
 	}
 
+	/* Return the distance between two vectors */
 	template <typename T, u8 N>
 	static T Distance(const Vector<T,N>& lhs, const Vector<T,N>& rhs) {
 		T distance = 0.f;

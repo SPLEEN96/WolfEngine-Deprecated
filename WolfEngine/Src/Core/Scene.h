@@ -15,9 +15,7 @@ public:
 		delete m_root_entity;
 	}
 
-	virtual void Init(ResourceFactory* rfactory_handle){
-		m_rfactory_handle = rfactory_handle;
-	}
+	virtual void Init(ResourceFactory* rfactory_handle){}
 	virtual void Input(float dTime, KeyboardState* curr_keyboard_state, MouseState* curr_mouse_state) {
 		m_root_entity->Input(dTime, curr_keyboard_state, curr_mouse_state);
 	}
@@ -39,7 +37,6 @@ public:
 	}
 
 protected:
-	ResourceFactory *m_rfactory_handle;
 	Entity *m_root_entity;
 	float m_screen_width, m_screen_height;
 };
