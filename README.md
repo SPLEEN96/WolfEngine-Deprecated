@@ -26,8 +26,10 @@ Suffice to say that this is a work in progress!
 
 ### Config
 In order for the engine to work, you need to:
-* Change the VisualStudio target platform to win32<br/>
-  - right-clicking on the project and choose **Properties**
+* Have a graphic card that supports OpenGL 3.3
+* Update your VisualStudio to it's latest version
+* Change the VisualStudio target platform to Win32<br/>
+  - right-clicking on the project in VisualStudio and choose **Properties**
   - click on the **Configuration Manager** at the top of the **Property Pages** dialog box
   ![Alt text](/screenshots/target_platform_1.png?raw=true "Configuration Manager")
   - change the **Active solution platform** to **x86** and click on close
@@ -73,9 +75,9 @@ some_light->AddComponent(new KeyboardMovement(some, other, arguments));
 * Transform the entity with its **Transform Component** (optional)<br/>
 ```c++
 /* Note that scaling or rotation doesn't affect a light */
-some_light->GetTransform()->Scale(Vector3f(2.f, 1.f, 10.f)); /* the vector3f represent the 3 axis x,y,z */
+some_light->GetTransform()->Scale(Vector3f(2.f, 1.f, 10.f)); /* The vector3f represent the 3 axis x,y,z */
 some_light->GetTransform()->SetPosition(Vector3f(0.f, -1.3f, 0.f));
-some_light->GetTransform()->Rotate(45.f, Vector3f(0.f, 1.f, 0.f)); /* rotate with an angle of 45 degree on the y axis */
+some_light->GetTransform()->Rotate(45.f, Vector3f(0.f, 1.f, 0.f)); /* Rotate with an angle of 45 degree on the y axis */
 ```
 * And add it to the **Root Entity** of the **Scene**<br/>
 ```c++
@@ -98,8 +100,8 @@ void TestScene::Init(ResourceFactory* rfactory_handle){
   for(size_t i=0; i<1000; i++){                                               /* ...use it how many times that you want! */
     Entity *tmp_entity  =new Entity();
     tmp_entity  =rfactory_handle->BuildEntityFromModelData("model filename", &some_material, "entity name");
-    tmp_entity->Translate(Vector3f(i*i,0.f,0.f)); /* translate each entities on the x axis to draw them side by side */
-    m_root_entity->AddChild(tmp_entity); /* add the entity to the root entity */
+    tmp_entity->Translate(Vector3f(i*i,0.f,0.f)); /* Translate each entities on the x axis to draw them side by side */
+    m_root_entity->AddChild(tmp_entity); /* Add the entity to the root entity */
   }
 }
 ```
@@ -129,26 +131,56 @@ This type of light is used to create effect such as sunlight. <br/>
 ![Alt text](/screenshots/directional.png?raw=true "Directional") <br/>
 *img source: http://learningwebgl.com/lessons/lesson07/directional.png* <br/><br/>
 
-The constructor of a DirectionalLight looks like this:
+The constructor of a **DirectionalLight** looks like this:
 ```c++
-DirectionalLight(RenderingEngineData* rdata, Vector3f color, float intensity, Vector3f target) 
+/* Found in /Src/Components/Lights/DirectionalLight.h */
+DirectionalLight(RenderingEngineData* rdata, Vector3f color, float intensity, Vector3f target);
 ```
 Where
 + rdata is an handle to to the **RenderingEngine Data**.<br/> 
 It is use to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
 This list is then used each frames to render all the lights.
-+ color is the color of the light
++ color is the color(r,g,b) of the light
 + intensity is the force of the light
 + target is the direction of the light<br/><br/>
 
 So, this is what the instantiation of a **DirectionalLight** pointing forward on the z axis looks like:
 ```c++
-Entity *sunlight = new Entity("sun",false);                          /* first create an entity */
-sunlight->GetTransform()->SetPosition(Vector3f(0.f, 5.f, -5.f));     /* set its position */
+Entity *sunlight = new Entity("sun", false);                         /* First create an entity */
+sunlight->GetTransform()->SetPosition(Vector3f(0.f, 5.f, -5.f));     /* Set its position */
 sunlight->AddComponent(new DirectionalLight(RenderingEngine::GetInstance().GetDataHandle(),Vector3f(0.5f), 0.1f, Vector3f(0.f, 0.f, 1.f)));
+m_root_entity->AddChild(sunlight);                                   /* Don't forget to add it to the RootEntity! */
 ```
 ![Alt text](/screenshots/directional_before_after.png?raw=true "Before/After") <br/>
 ##### PointLight :high_brightness:
+A **PointLight** is a point in 3D space that emits rays in all direction. The light rays fade out quadratically until they meet the **Range** of the **PointLight** where the intensity is set to zero. <br/>
+They are the most commonly used light effect in a scene. <br/>
+![Alt text](/screenshots/pointlight.png?raw=true "PointLight") <br/>
+*img source: http://www.scratchapixel.com/images/upload/shading-intro/shad-sphericallight2.png?*
+
+The constructor of a **PointLight** looks like this:
+```c++
+/* found in /Src/Components/Lights/PointLight.h */
+PointLight(RenderingEngineData* rdata, Vector3f color, float intensity =1.f, const POINT_RANGE &range =RANGE_7);
+```
+Where
++ rdata is an handle to to the **RenderingEngine Data**.<br/> 
+It is use to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
+This list is then used each frames to render all the lights.
++ color is the color(r,g,b) of the light
++ intensity is the force of the light
++ range is an **Enum** found with the definition of **PointLight** and determines the **Range** of the light
+  - Some range example: RANGE_7, RANGE_20, RANGE_32,..
+
+So, this is what the instantiation of a **PointLight** with a red color and a position of (x=-1, y=0.5, z=0) looks like: 
+```c++
+Entity *light = new Entity("light", false);                          /* First create an entity */
+light->GetTransform()->SetPosition(Vector3f(-1.f, 0.5f, 0.f));       /* Set its position */
+light->AddComponent(new PointLight(RenderingEngine::GetInstance().GetDataHandle(),Vector3f(1.f,0.f,0.f), RANGE_20);
+m_root_entity->AddChild(light);                                     /* Don't forget to add it to the RootEntity! */
+```
+![Alt text](/screenshots/pointlight_ex.png?raw=true "Before/After") <br/>
+
 ##### SpotLight :flashlight:
 Will be implemented in the (not too) distant future...
 ### Final Point
