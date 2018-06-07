@@ -46,6 +46,14 @@ void TestScene::Init(ResourceFactory* rfactory_handle) {
 	m_root_entity->AddChild(model);
 	m_root_entity->AddChild(light_01);
 	m_root_entity->AddChild(light_02);
+
+	/* == Uncomment to test == */
+	/* Demonstration of how fast loading 1000 entities is */
+	//for (u16 i = 0; i < 1000; i++) {
+	//	Entity* tmp_entity = rfactory_handle->BuildEntityFromModelData("Wolf.obj", &MAT_RUBY, "wolf", true);
+	//	tmp_entity->GetTransform()->Translate(Vector3f(i, 0.f, 0.f)); /* Translate each entities on the x axis to draw them side by side */
+	//	m_root_entity->AddChild(tmp_entity); /* Add the entity to the root entity */
+	//}
 }
 
 
