@@ -1,6 +1,6 @@
 # WolfEngine :wolf: (name subject to change)
-Realtime Rendering Engine in C++ and OPENGL (started 05/17/2018) <br/>
-Librairies: glad, glm, glfw, stb_images, assimp, imgui
+Realtime Rendering Engine Library in C++ and OPENGL (started 05/17/2018) <br/>
+Librairies used : glad, glm, glfw, stb_images, assimp, imgui
 
 ## Motivation
 This project puts into practice everything I’ve learned in Software Engineering <br/>
@@ -27,9 +27,9 @@ Suffice to say that this is a work in progress!
 ### Config
 In order for the engine to work, you need to:
 * Have a graphic card that supports OpenGL 3.3
-* Update your VisualStudio to it's latest version
+* Update your VisualStudio to its latest version
 * Change the VisualStudio target platform to Win32<br/>
-  - right-clicking on the project in VisualStudio and choose **Properties**
+  - right-click on the project in VisualStudio and choose **Properties**
   - click on the **Configuration Manager** at the top of the **Property Pages** dialog box
   ![Alt text](/screenshots/target_platform_1.png?raw=true "Configuration Manager")
   - change the **Active solution platform** to **x86** and click on close
@@ -46,10 +46,10 @@ That's it! You are now ready to use it!
 
 ### How to use it
 #### The Basics :book:
-In order to draw something on the screen, you have to write some code in a **Scene object**. <br/>
+In order to draw something on the screen, you have to write some code in a **Scene object** (/Src/Core/Scene.h). <br/>
 One called **TestScene** (/Src/TestScene/TestScene.cpp) comes with the project but you can create your own.
-The "code" you have to write is an amalgam of **Entities**. An **Entity** is foremost an abstract concept; anything that is drawn, or not, in the scene.<br/>
-What defines an Entity is its **Components**.
+The "code" you have to write is an amalgam of **Entities**. An **Entity** (/Src/Core/Entity.h) is foremost an abstract concept; anything that is drawn, or not, in the scene.<br/>
+What defines an Entity is its **Components** (/Src/Components/EntityComponent.h).
 ##### Some useful components
 + Transform (every entity has one per default)
 + MeshRenderer
@@ -96,11 +96,11 @@ Camera(RenderingEngineData* rdata, Entity* parent,
 		Vector3f target = Vector3f(0.f, 0.f, 1.f))
 ```
 Where
-+ rdata is an handle to to the **RenderingEngine Data**.<br/> 
-It is use to automatically add the **Camera** to the **RenderingEngine**.<br/>
++ rdata is a handle to to the **RenderingEngine Data**.<br/> 
+It is used to automatically add the **Camera** to the **RenderingEngine**.<br/>
 + parent is the entity containing it (Remember that **Camera** is an **EntityComponent**).
 + screen_width and screen_height are the width and height of the **Window**. <br/>
-You can access them with the member attributes of the **Scene** m_screen_width and m_screen_height
+You can access them with the member attributes of the **Scene** m_screen_width and m_screen_height.
 + You don't have to play with the rest of the arguments, but if you do,
   - fov is the **Field of View** angle of the camera. It determines how wide you can see in the **Scene**.
   - zNear is the front of the **Clipping Plane** of the **Camera**. It determines how close an object is from the **Camera** before being **Clipped**(not drawned).
@@ -115,7 +115,7 @@ Controller->AddComponent(new KeyboardMovement()); /* If you want to be able to m
 ```
 
 #### Loading a 3d model :floppy_disk:
-The **ResourceFactory** is used to load data(3D models, shaders, textures, etc..) in memory and keep a reference for future use.<br/>
+The **ResourceFactory** (/Src/Core/ResourceManagement/ResourceFactory.h) is used to load data(3D models, shaders, textures, etc..) in memory and to keep a reference for future use.<br/>
 A **ResourceFactory** handle comes in the form of an argument in the **Init()** method of the **Scene**.<br/>
 It can be used to load a **Model** in memory <br/>
 and then build an **Entity** containing a **Material** and an reference of the said **Model**. :dizzy_face: <br/>
@@ -137,7 +137,7 @@ void TestScene::Init(ResourceFactory* rfactory_handle){
 You can find a list of **Material** in the file **/Src/Rendering/Material.h** <br/>
 Some 3D **Models** come with the project in the folder **/Resources/Models/** <br/>
 
-Remember that you only have to enter the filename in the **LoadModelDataInMemory()** method!<br/>
+Remember that you only have to enter the filename in the **LoadModelDataInMemory()** method.<br/>
 So, for the model /Project/Full/Path/Resources/Models/Wolf.obj the method will look like this:
 ```c++
 rfactory_handle->LoadModelDataInMemory("Wolf.obj");
@@ -165,11 +165,11 @@ The constructor of a **DirectionalLight** looks like this:
 DirectionalLight(RenderingEngineData* rdata, Vector3f color, float intensity, Vector3f target);
 ```
 Where
-+ rdata is an handle to to the **RenderingEngine Data**.<br/> 
++ rdata is a handle to to the **RenderingEngine Data**.<br/> 
 It is use to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
 This list is then used each frames to render all the lights.
 + color is the color(r,g,b) of the light.
-+ intensity is the force of the light.
++ intensity is the force of the light (it looks better when the intensity is lower).
 + target is the direction of the light.<br/><br/>
 
 So, this is what the instantiation of a **DirectionalLight** pointing forward on the z axis looks like:
@@ -181,8 +181,8 @@ m_root_entity->AddChild(sunlight);                                   /* Don't fo
 ```
 ![Alt text](/screenshots/directional_before_after.png?raw=true "Before/After") <br/>
 ##### PointLight :high_brightness:
-A **PointLight** is a point in 3D space that emits rays in all directions. The light rays fade out quadratically until they meet the **Range** of the **PointLight** where the intensity is set to zero. <br/>
-They are the most commonly used light effect in a scene. <br/>
+A **PointLight** is a point in 3D space that emits rays in all directions. The light rays fade out quadratically until they meet the **Range** of the **PointLight** where the **Intensity** is set to zero. This process is called **Attenuation**. <br/>
+They are the most commonly used light effects in a scene. <br/>
 ![Alt text](/screenshots/pointlight.png?raw=true "PointLight") <br/>
 *img source: http://www.scratchapixel.com/images/upload/shading-intro/shad-sphericallight2.png?*
 
@@ -192,11 +192,11 @@ The constructor of a **PointLight** looks like this:
 PointLight(RenderingEngineData* rdata, Vector3f color, float intensity =1.f, const POINT_RANGE &range =RANGE_7);
 ```
 Where
-+ rdata is an handle to to the **RenderingEngine Data**.<br/> 
-It is use to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
++ rdata is a handle to to the **RenderingEngine Data**.<br/> 
+It is used to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
 This list is then used each frames to render all the lights.
 + color is the color(r,g,b) of the light.
-+ intensity is the force of the light.
++ intensity is the force of the light (you can leave it to 1).
 + range is an **Enum** found with the definition of **PointLight** and determines the **Range** of the light.
   - Some range example: RANGE_7, RANGE_20, RANGE_32,..
 
