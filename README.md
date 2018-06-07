@@ -126,7 +126,7 @@ Once a **Model** is loaded in memory, you can build as many entities as you want
 void TestScene::Init(ResourceFactory* rfactory_handle){
   rfactory_handle->LoadModelDataInMemory("filename(without the full path)");  /* Load the model once... */
   for(size_t i=0; i<1000; i++){                                               /* ...use it how many times that you want! */
-    Entity *tmp_entity  =new Entity();
+    Entity *tmp_entity  =new Entity("name");
     tmp_entity  =rfactory_handle->BuildEntityFromModelData("model filename", &some_material, "entity name");
     tmp_entity->Translate(Vector3f(i*i,0.f,0.f)); /* Translate each entities on the x axis to draw them side by side */
     m_root_entity->AddChild(tmp_entity); /* Add the entity to the root entity */
