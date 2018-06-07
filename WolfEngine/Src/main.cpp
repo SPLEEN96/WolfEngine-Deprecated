@@ -16,8 +16,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
-//#include <crtdbg.h>
-//#include <vld.h>
+#include <crtdbg.h>
 
 #include "Core\CoreEngine.h"
 
@@ -26,8 +25,8 @@
 
 int main() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	//CoreEngine::GetInstance().Init(1280, 720, 60);
-	CoreEngine::GetInstance().Init(1920, 1080, 60);
+	CoreEngine::GetInstance().Init(1280, 720, 60); /* By keeping the resolution to 720p it is easier to look a the Console. */
+	//CoreEngine::GetInstance().Init(1920, 1080, 60);
 	CoreEngine::GetInstance().CreateEngineWindow("WolfEngine", new TestScene());
 	CoreEngine::GetInstance().Start();
 
