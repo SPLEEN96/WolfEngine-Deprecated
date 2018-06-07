@@ -86,6 +86,34 @@ m_root_entity->AddChild(some_light);
 And just like that, you have a light drawn on the screen! :smiley: <br/>
 A test scene exemple and somes basic entities comes with the project.
 
+#### The Camera
+It is required to add a **Camera** to the **Scene**.
+The constructor looks like this:
+```c++
+Camera(RenderingEngineData* rdata, Entity* parent,
+		const float& screen_width, const float& screen_height, const float &fov = 45.f, 
+		const float &zNear = 0.01f, const float &zFar = 300.f, 
+		Vector3f target = Vector3f(0.f, 0.f, 1.f))
+```
+Where
++ rdata is an handle to to the **RenderingEngine Data**.<br/> 
+It is use to automatically add the **Camera** to the **RenderingEngine**.<br/>
++ parent is the entity containing it (Remember that **Camera** is an **EntityComponent**).
++ screen_width and screen_height are the width and height of the **Window**. <br/>
+You can access them with the member attributes of the scene m_screen_width and m_screen_height
++ You don't have to play with the rest of the arguments, but if you do,
+  - fov is the **Field of View** angle of the camera. It determines how wide you can see in the **Scene**.
+  - zNear is the front of the **Clipping Plane** of the **Camera**. It determines how close an object is from the **Camera** before being **Clipped**(not drawned).
+  - zFar is the back of the **Clipping Plane** of the **Camera**. It determines how far an object can be from the **Camera** before being **Clipped**(not drawned).
+  - target is the direction of the **Camera**. <br/><br/>
+
+So, this is what the instantiation of a **Camera** looks like:
+```c++
+Entity* Controller = new Entity("Controller");
+Controller->AddComponent(new Camera(RenderingEngine::GetInstance().GetDataHandle(), Controller, m_screen_width, m_screen_height));
+Controller->AddComponent(new KeyboardMovement()); /* If you want to be able to move with the keyboard */
+```
+
 #### Loading a 3d model
 The **ResourceFactory** is used to load data(3D models, shaders, textures, etc..) in memory and keep a reference for future use.<br/>
 A **ResourceFactory** handle comes in the form of an argument in the **Init()** method of the **Scene**.<br/>
@@ -140,9 +168,9 @@ Where
 + rdata is an handle to to the **RenderingEngine Data**.<br/> 
 It is use to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
 This list is then used each frames to render all the lights.
-+ color is the color(r,g,b) of the light
-+ intensity is the force of the light
-+ target is the direction of the light<br/><br/>
++ color is the color(r,g,b) of the light.
++ intensity is the force of the light.
++ target is the direction of the light.<br/><br/>
 
 So, this is what the instantiation of a **DirectionalLight** pointing forward on the z axis looks like:
 ```c++
@@ -167,9 +195,9 @@ Where
 + rdata is an handle to to the **RenderingEngine Data**.<br/> 
 It is use to automatically add the object to the list of lights of the **RenderingEngine**.<br/>
 This list is then used each frames to render all the lights.
-+ color is the color(r,g,b) of the light
-+ intensity is the force of the light
-+ range is an **Enum** found with the definition of **PointLight** and determines the **Range** of the light
++ color is the color(r,g,b) of the light.
++ intensity is the force of the light.
++ range is an **Enum** found with the definition of **PointLight** and determines the **Range** of the light.
   - Some range example: RANGE_7, RANGE_20, RANGE_32,..
 
 So, this is what the instantiation of a **PointLight** with a red color and a position of (x=-1, y=0.5, z=0) looks like: 
@@ -185,6 +213,7 @@ m_root_entity->AddChild(light);                                     /* Don't for
 Will be implemented in the (not too) distant future...
 ### Final Point
 Fear not! Once the project is set-up with the TestScene exemple, all of what you just red will make sense!
+Also, don't forget to look at the terminal for errors.
 
 ## Future of the project (not in order)
  * Arch Linux/CMake support
