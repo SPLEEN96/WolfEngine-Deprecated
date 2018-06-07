@@ -1,5 +1,5 @@
 # WolfEngine (name subject to change)
-Realtime Rendering Engine Library in C++ and OPENGL (started 05/17/2018) <br/>
+Realtime Rendering Engine in C++ and OPENGL (started 05/17/2018) <br/>
 Librairies used : glad, glm, glfw, stb_images, assimp, imgui
 
 ## Motivation
