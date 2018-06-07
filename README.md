@@ -217,6 +217,8 @@ Also, don't forget to look at the terminal for errors.
 
 ## Future of the project (not in order)
  * Arch Linux/CMake support
+ * Batch Rendering
+ * Forward**Plus** Rendering or Deferred Rendering
  * Quaternions for camera rotation
  * No librairies for matrix calculation
  * Data Oriented Design (Entity Component System or ECS)
