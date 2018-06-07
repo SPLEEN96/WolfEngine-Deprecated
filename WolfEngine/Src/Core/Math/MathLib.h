@@ -6,9 +6,11 @@
 #include "Matrix.h"
 
 namespace MLib {
+#define PI 3.141592653589793
+
 	/* Convert an Angle in Degree to an Agle in Radian */
 	static float Radians(const float &angle_in_degree) {
-		return (angle_in_degree / 57.295779513f);
+		return (angle_in_degree / (360.f/(2*PI)));
 	}
 
 	/* ==================================== VECTOR OPERATIONS ====================================*/
@@ -57,7 +59,7 @@ namespace MLib {
 		return Vector3f(X, Y, Z);
 	}
 
-	/* =============================== TRANSFORMATIONS ==================================== */
+	/* =============================== TRANSFORMATIONS (STILL USING GLM) ==================================== */
 
 	static Matrix4f Translate(const Matrix4f &matrix, const Vector3f &translatation_axes) {
 		glm::vec3 glm_translation = glm::vec3(translatation_axes.X(), translatation_axes.Y(), translatation_axes.Z());
@@ -75,7 +77,7 @@ namespace MLib {
 	}
 
 
-	/* ========================================= OPENGL COORDINATES SYSTEM ==================================== */
+	/* ========================================= OPENGL COORDINATES SYSTEM  (STILL USING GLM) ==================================== */
 
 	static Matrix4f Perspective(const float &fov, const float &aspect_ratio, const float &znear, const float &zfar) {
 		return Matrix4f(glm::perspective(fov, aspect_ratio, znear, zfar));
