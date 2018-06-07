@@ -15,7 +15,7 @@ Suffice to say that this is a work in progress!
 ## Features (still barebones...)
  * Entity Component (EC)
  * Forward Rendering
- * Model Loading (can load up to 10k entities in less than 3 seconds)
+ * Model Loading
  * Phong Shaders
  * UI (barely implemented)
  * Ease of use
@@ -138,11 +138,11 @@ You can find a list of **Material** in the file **/Src/Rendering/Material.h** <b
 Some 3D **Models** come with the project in the folder **/Resources/Models/** <br/>
 
 Remember that you only have to enter the filename in the **LoadModelDataInMemory()** method!<br/>
-So, for the model /Project/Full/Path/Resources/Models/Xenomorph.obj the method will look like this:
+So, for the model /Project/Full/Path/Resources/Models/Wolf.obj the method will look like this:
 ```c++
-rfactory_handle->LoadModelDataInMemory("Xenomorph.obj");
-Entity *xeno  =rfactory->BuilEntityFromModelData("Xenomorph.obj", &MAT_OBSIDIAN, "xenomorph entity");
-m_root_entity->AddChild(xeno);
+rfactory_handle->LoadModelDataInMemory("Wolf.obj");
+Entity *model  =rfactory->BuilEntityFromModelData("Wolf.obj", &MAT_OBSIDIAN, "wolf entity");
+m_root_entity->AddChild(model);
 ```
 
 #### Add some Lighting to the scene :star2:
