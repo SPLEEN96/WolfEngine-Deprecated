@@ -146,6 +146,14 @@ public:
 		m_vec_data[4] = rhs.W;
 	}
 
+	Vector4fData ToVData() {
+		Vector4fData vec;
+		vec.X = m_vec_data[0];
+		vec.Y = m_vec_data[1];
+		vec.Z = m_vec_data[2];
+		vec.W = m_vec_data[3];
+		return vec;
+	}
 
 	void X(const float& x) {
 		m_vec_data[0] = x;
@@ -199,6 +207,13 @@ public:
 		m_vec_data[2] = rhs.Z;
 	}
 
+	Vector3fData ToVData() {
+		Vector3fData vec;
+		vec.X = m_vec_data[0];
+		vec.Y = m_vec_data[1];
+		vec.Z = m_vec_data[2];
+		return vec;
+	}
 
 	void X(const float& x) {
 		m_vec_data[0] = x;
@@ -242,6 +257,12 @@ public:
 		m_vec_data[1] = rhs.Y;
 	}
 
+	Vector2fData ToVData() {
+		Vector2fData vec;
+		vec.X = m_vec_data[0];
+		vec.Y = m_vec_data[1];
+		return vec;
+	}
 
 	void X(const float& x) {
 		m_vec_data[0] = x;
