@@ -21,7 +21,7 @@ struct ModelLoader :public ResourceLoader {
 		char* fullpath = ResourceLoader::GetFullPath(MODEL_PATH, filename);
 
 		Assimp::Importer importer;
-		const aiScene *scene = importer.ReadFile(fullpath, aiProcess_Triangulate | aiProcess_FlipUVs);
+		const aiScene *scene = importer.ReadFile(fullpath, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
 			OutputErrorMsg("MeshLoader (assimp)", ERR_ASSIMP, importer.GetErrorString());
