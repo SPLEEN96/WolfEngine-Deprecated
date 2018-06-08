@@ -10,6 +10,7 @@ public:
 		glGenVertexArrays(1, &m_VAO);
 		glGenBuffers(1, &m_VBO);
 		glGenBuffers(1, &m_EBO);
+		m_length = 0;
 	}
 	MeshData(const MeshData &rhs) {
 		m_VAO = rhs.m_VAO;
