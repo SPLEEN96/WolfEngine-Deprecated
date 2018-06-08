@@ -51,7 +51,7 @@ public:
 	}
 
 	Vector3f GetPosition() {
-		return m_parent->GetTransform()->GetPosition();
+		return m_parent->GetPosition();
 	}
 
 	virtual Shader* GetShader() {

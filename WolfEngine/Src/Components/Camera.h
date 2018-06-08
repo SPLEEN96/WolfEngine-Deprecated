@@ -46,7 +46,7 @@ public:
 	}
 
 	Vector3f GetPosition() const {
-		return m_parent->GetTransform()->GetPosition();
+		return m_parent->GetPosition();
 	}
 	Vector3f GetFront() const {
 		return m_front;

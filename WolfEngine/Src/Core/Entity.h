@@ -88,6 +88,9 @@ public:
 	Transform* GetTransform() {
 		return m_transform;
 	}
+	Vector3f GetPosition() {
+		return m_transform->GetPosition();
+	}
 	
 	u32 NumberOfChildren() {
 		return m_children->Length();

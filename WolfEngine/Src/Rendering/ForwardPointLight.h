@@ -42,7 +42,7 @@ public:
 		SetFloat("material.shininess", material->Shininess);
 
 		SetFloat("pointlight.range", m_range);
-		SetVector3f("pointlight.position", 1, m_light->GetTransform()->GetPosition());
+		SetVector3f("pointlight.position", 1, m_light->GetPosition());
 		SetFloat("pointlight.kConstant", m_kConstant);
 		SetFloat("pointlight.kLinear", m_kLinear);
 		SetFloat("pointlight.kQuadratic", m_kQuadratic);
