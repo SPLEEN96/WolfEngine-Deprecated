@@ -38,7 +38,7 @@ protected:
 
 	/* Put the content of a file into a char buffer */
 	char* ReadFromFile(FILE *filep, const u32 &file_len) const {
-		char* buffer = (char*)malloc(file_len * sizeof(char));
+		char* buffer = (char*)malloc(file_len+1 * sizeof(char));
 		int curr_char;                          /* curr_char is an int instead of a char because EOF is a negative number and char may be unsigned */
 		u32 index = 0;
 
@@ -47,8 +47,7 @@ protected:
 			buffer[index] = curr_char;
 			index++;
 		}
-		buffer[index] = '\n';
-		buffer[index + 1] = '\0';
+		buffer[index] = '\0';
 		return buffer;
 	}
 };
