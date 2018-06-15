@@ -83,7 +83,7 @@ some_light->GetTransform()->Rotate(45.f, Vector3f(0.f, 1.f, 0.f)); /* Rotate wit
 ```c++
 m_root_entity->AddChild(some_light);
 ```
-And just like that, you have a light drawn on the screen! :smiley: <br/>
+And just like that, you have a light drawn on the screen! <br/>
 A test scene exemple and somes basic entities comes with the project.
 
 #### The Camera :camera:
@@ -118,8 +118,8 @@ Controller->AddComponent(new KeyboardMovement()); /* If you want to be able to m
 The **ResourceFactory** (/Src/Core/ResourceManagement/ResourceFactory.h) is used to load data(3D models, shaders, textures, etc..) in memory and to keep a reference for future use.<br/>
 A **ResourceFactory** handle comes in the form of an argument in the **Init()** method of the **Scene**.<br/>
 It can be used to load a **Model** in memory <br/>
-and then build an **Entity** containing a **Material** and an reference of the said **Model**. :dizzy_face: <br/>
-Trust me, it is simpler than it looks! :joy: <br/>
+and then build an **Entity** containing a **Material** and an reference of the said **Model**. <br/>
+Trust me, it is simpler than it looks! <br/>
 Once a **Model** is loaded in memory, you can build as many entities as you want with it.
 ```c++
 /* The initialization method of the Scene object TestScene */
