@@ -56,12 +56,12 @@ public:
 		ImGui::Text("Average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
 		
-		ImGui::SetNextWindowSize(ImVec2(500, 150));
-		if (ImGui::Begin("EntityCreation",NULL,ImGuiWindowFlags_NoCollapse)) {
-			CreateEntityUI(root_entity, rfactory);
+		/*ImGui::SetNextWindowSize(ImVec2(500, 150));*/
+		//if (ImGui::Begin("EntityCreation",NULL,ImGuiWindowFlags_NoCollapse)) {
+		//	CreateEntityUI(root_entity, rfactory);
 
-			ImGui::End();
-		}
+		//	ImGui::End();
+		//}
 	
 		static int curr_item = 0;
 		ImGui::Combo("Entities", &curr_item, &entities[0], entities.Length());
