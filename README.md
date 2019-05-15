@@ -48,7 +48,7 @@ That's it! You are now ready to use it!
 #### The Basics :book:
 In order to draw something on the screen, you have to write some code in a **Scene object** (/Src/Core/Scene.h). <br/>
 One called **TestScene** (/Src/TestScene/TestScene.cpp) comes with the project but you can create your own.
-The "code" you have to write is an amalgam of **Entities**. An **Entity** (/Src/Core/Entity.h) is foremost an abstract concept; anything that is drawn, or not, in the scene.<br/>
+The code you have to write is an amalgam of **Entities**. An **Entity** (/Src/Core/Entity.h) is foremost an abstract concept; anything that is drawn, or not, in the scene.<br/>
 What defines an Entity is its **Components** (/Src/Components/EntityComponent.h).
 ##### Some useful components
 + Transform (every entity has one per default)
